@@ -62,6 +62,7 @@ function checkWinner(){
   if(roundWon){
     statusText.textContent = `${currentPlayer} wins!`;
     running = false;
+    playFireworksAnimation();
   }
   else if(!options.includes("")){
     statusText.textContent = `Draw!`;
@@ -71,6 +72,28 @@ function checkWinner(){
     changePlayer();
   }
 }
+function playFireworksAnimation() {
+  const fireworksContainer = document.querySelector("#fireworksContainer");
+
+  // Clear any existing content in the container
+  fireworksContainer.innerHTML = "";
+
+  // Initialize the fireworks animation library
+  // Replace the configuration options as per the chosen library
+  const fireworksOptions = {
+    // Configuration options for the fireworks animation library
+  };
+
+  // Create the fireworks animation
+  const fireworksAnimation = new ParticleJS(fireworksOptions);
+
+  // Append the animation to the fireworks container
+  fireworksContainer.appendChild(fireworksAnimation.getCanvas());
+
+  // Start the fireworks animation
+  fireworksAnimation.start();
+}
+
 function restartGame(){
   currentPlayer = "X";
   options = ["","","","","","","","","",];
